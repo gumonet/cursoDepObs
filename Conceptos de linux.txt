@@ -1,0 +1,12 @@
+- Ahgregar daemon al arranque del dhcp
+systemctl start dhcpcd@enp0s3 
+systemctl enable dhcpcd@enp0s3 
+
+
+
+CARGAR PARTICION DE WINDOWS
+add fstab
+LABEL=Data /mnt/Data ntfs-3g defaults,locale=ca_ES.UTF-8 0 0
+
+Ejecutar
+sudo ntfsfix /dev/sda1 

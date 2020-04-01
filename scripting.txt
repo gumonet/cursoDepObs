@@ -1,0 +1,59 @@
+==============================================================================================
+crear una carpeta llamada data
+generar 1000 archivos con contenido aleatorio y que pesen 3kb cada 1
+------------------------------
+#!/bin/bash
+mkdir data/
+cd data/
+x=1
+while [ $x -le 1000 ]
+do
+  dd if=/dev/zero of="file_$x.txt"  bs=3KB  count=1
+  echo "Welcome $x times"
+  x=$(( $x + 1 ))
+done
+-------------------------------
+mkdir -p /tmp/data
+cd /tmp/data
+for i in {1..1000}; do dd if=/dev/urandom bs=3 count=1 of=file$i; done 
+
+=================================================================================================
+
+Conseguir la IP de cada sitio y guardarlo en un tsv
+Ejemplo:
+localhost	127.0.0.1
+
+#!/bin/bash
+#mkdir temp && cd temp
+#wget https://moz.com/top-500/download/\?table\=top500Domains -O domains.csv
+INPUT=temp/domains.csv
+OLDIFS=$IFS
+IFS=','
+output="ips.tsv"
+while read number domain idontcare
+do
+        domain=${domain//\"/}
+        echo "$domain"
+        ip=$(dig +short ${domain} | tail -n 1)
+        #echo "ID : $number"
+        #echo "DOMAIN : $domain"
+        #echo "IP : $ip"
+        echo -e "${domain}\t${ip}" | tee -a ${output} #Guardamos en un tsv
+done < <(tail -n +2 $INPUT) #Nos saltamos la primera linea
+IFS=$OLDIFS
+
+
+---------------------------------------------------------------------------------
+remove_header() { tail -n +2 ; }
+select_domains() { awk -F , '{print $2}' ; }
+remove_quotes() { sed 's/\"//g' ; }
+domain_and_ip() { xargs -I{} sh -c 'echo "{}\t $(dig +short {} | tail -n 1)"' ; }
+
+cat domains.csv \
+  | remove_header \
+  | select_domains \
+  | remove_quotes \
+  | sort \
+  | domain_and_ip \
+  > ips.tsv
+  -------------------------------------------------------------------------------

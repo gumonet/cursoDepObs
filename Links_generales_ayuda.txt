@@ -1,0 +1,25 @@
+https://github.com/awesome-selfhosted/awesome-selfhosted -> Sistemas
+
+
+Foros y documentación
+https://docs.docker.com/
+https://kubernetes.io/docs/home/
+https://git-scm.com/doc
+https://prometheus.io/docs/
+
+https://bin.privacytools.io/
+
+------ Administración de Servidores ----
+
+https://www.shodan.io/ -> Puedes ver servidores abiertos en el mundo para realizar pruebas.
+
+https://github.com/imthenachoman/How-To-Secure-A-Linux-Server -> Guia para seguridad en linux server
+
+https://www.passwordstore.org/
+https://www.freedesktop.org/wiki/Software/systemd/
+http://0pointer.de/blog/
+https://wiki.archlinux.org/index.php/Core_utilities
+https://gist.github.com/search?q=language%3Ashell&ref=searchresults
+https://github.com/dylanaraps/neofetch
+
+https://blog.jessfraz.com/post/for-the-love-of-pipes/
