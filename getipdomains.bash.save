@@ -1,0 +1,17 @@
+#!/bin/bash
+#mkdir temp && cd temp
+#wget https://moz.com/top-500/download/\?table\=top500Domains -O domains.csv
+
+
+INPUT=domains.csv
+OLDIFS=$IFS
+IFS=','
+#[ ! -f $INPUT ] && { echo "$INPUT file not found"; exit 99; }
+while read number domain idontcare
+do
+	I=$(dig +short $domain)
+	echo "ID : $number"
+	echo "DOMAIN : $domain"
+	echo "IP : $IP"
+done < $INPUT
+IFS=$OLDIFS

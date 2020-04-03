@@ -1,0 +1,14 @@
+#!/bin/bash
+OS=$(cat /etc/os-release | grep -w "NAME=" | sed -e "s/NAME=//" | sed -e "s/\"//g" | sed -e "s/^[[:space:]]*//g" | sed -e 's/[^[:print$HOSTTYPE= env | grep -w "HOSTTYPE=" | sed -e "s/HOSTTYPE=//" | sed -e "s/^[[:space:]]*//g" | sed -e 's/[^[:print:]]//g'
+CPU=$(lshw -class processor | grep -e "product:" | sed -e "s/product://" | sed -e "s/^[[:space:]]*//g" | sed -e 's/[^[:print:]]//g')
+echo "User:             $(whoami)"
+echo "________________________________________________________________________________"
+echo "OS:               $OS $HOSTTYPE"
+echo "Kernel:           $(uname -r)"
+echo "Distro:           $(env | grep "WSL_DISTRO_NAME=" | sed -e "s/WSL_DISTRO_NAME=//")"
+echo "Host:             $(hostname)"
+echo "Uptime:           $(uptime -p)"
+echo "Packages: $(apt-cache stats -q | grep -w "Total distinct versions:" | sed -e "s/Total distinct versions://" | sed -e "s/^[[:spac$echo "Shell:            $SHELL"
+echo "CPU:              $CPU"
+echo "Memory:"
+free
