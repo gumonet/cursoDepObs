@@ -1,0 +1,16 @@
+#Descarga la imagen del sistema
+FROM golang:1.8-alpine 
+#Agrega los archivos de la ruta local a el sistema en el directorio /go/src/hello-app
+ADD . /go/src/hello-app
+#Compila el proyecto
+RUN go install hello-app
+#Define un puerto
+ENV PORT 8080
+#  ejecuta el binario
+CMD ["/go/bin/hello-app"]
+
+
+#FROM alpine:latest
+#COPY --from=0 /go/bin/hello-app .
+#ENV PORT 8080
+#CMD ["./hello-app"]
