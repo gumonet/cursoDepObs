@@ -1,0 +1,6 @@
+groups:
+  - name: my_first_rule
+    rules:
+    - alert: InstanceDown
+      expr: up == 0
+      for: 20s

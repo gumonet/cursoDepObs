@@ -1,0 +1,14 @@
+global:
+  resolve_timeout: 5s
+route:
+  group_by: ['alertname']
+  receiver: email-me
+receivers:
+- name: email-me
+  email_configs:
+  - to: "gutierrez.monola@gmail.com"
+    from: "gutierrez.monola@gmial"
+    smarthost: smtp.gmail.com:587
+    auth_username: "gutierrez.monola@gmail.com"
+    auth_identity: "gutierrez.monola@gmail.com"
+    auth_password: "kigpjdlsqtzmglvo"
